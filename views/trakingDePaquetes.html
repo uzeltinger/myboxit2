@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title></title>
+<!--Begin AutoPilot
+<script type="text/javascript">(function(o){var b="https://api.autopilothq.com/anywhere/",t="cb7780893cf5421d9959efe45ff50119761aaf4c5b404556b3591ff3195936d8",a=window.AutopilotAnywhere={_runQueue:[],run:function(){this._runQueue.push(arguments);}},c=encodeURIComponent,s="SCRIPT",d=document,l=d.getElementsByTagName(s)[0],p="t="+c(d.title||"")+"&u="+c(d.location.href||"")+"&r="+c(d.referrer||""),j="text/javascript",z,y;if(!window.Autopilot) window.Autopilot=a;if(o.app) p="devmode=true&"+p;z=function(src,asy){var e=d.createElement(s);e.src=src;e.type=j;e.async=asy;l.parentNode.insertBefore(e,l);};y=function(){z(b+t+'?'+p,true);};if(window.attachEvent){window.attachEvent("onload",y);}else{window.addEventListener("load",y,false);}})({});</script>
+End AutoPilot -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WPBXCP9');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPBXCP9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --></body>
+<link href="../css/userStyle.css" rel="stylesheet" type="text/css" />
+
+
+<div class="trakingdepaquetes">
+	<div class="nnoorow">	
+		
+
+		
+	
+				 
+
+					
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<ul class="nav nav-tabs">
+				<!--
+				<li class="tab-primary" ng-class="{'active' : showAll}"><a href="#" ng-click="showTrakings('showAll')">Historial</a>
+
+				</li>
+				-->
+				<li  class="tab-secondary" ng-class="{'active' : showPaquetes}"><a href="#" ng-click="showTrakings('showPaquetes')">Paquetes</a>
+
+					
+
+				</li>
+				<li ng-class="{'active' : showOrdenes}"><a href="#" ng-click="showTrakings('showOrdenes')">Ordenes de Compra</a>
+					
+					
+				</li>				
+		  	</ul>
+		</div>
+
+			<ul class="subpill" ng-if="showPaquetes">
+						<li ng-class="{'active' : showPaquetesAlertado}"> 
+							<a href="#" ng-click="showTrakings('showPaquetesAlertado')">Alertados</a>
+						</li>
+						<li ng-class="{'active' : showPaquetesProceso}">
+							<a href="#" ng-click="showTrakings('showPaquetesProceso')">En Proceso</a>
+						</li>
+						<li ng-class="{'active' : showPaquetesEntregados}">
+							<a href="#" ng-click="showTrakings('showPaquetesEntregados')">Entregados</a>
+						</li>
+					</ul>
+
+			<ul class="subpill" ng-if="showOrdenes">
+						<li ng-class="{'active' : showOrdenesPendientes}">
+							<a href="#" ng-click="showTrakings('showOrdenesPendientes')">Pendiente pago</a>
+						</li>
+						<li ng-class="{'active' : showOrdenesPagadas}">
+							<a href="#" ng-click="showTrakings('showOrdenesPagadas')">Pagadas</a>
+						</li>
+					</ul>
+
+
+			<div class="col-sm-12 col-md-12 col-lg-12 tarjetas {{traking.attributes.statusClass}}" ng-repeat="traking in trakings" ng-init="hideAll(traking)">
+				<div class="tarjeta tarjeta-1">					
+					<div class="tarjeta-header">
+						<div class="numeroTracking"><b>Número de Tracking: </b>{{traking.attributes.NumeroTracking}}</div>
+						<div class="estado"><b>Estado:</b>{{traking.attributes.Estatus}}</div>
+					</div>
+					<div class="tarjeta-body">							
+						<div class="detalle ng-binding"><b>Descripción:</b>  {{traking.attributes.Paquete}} </div>
+						<div class="datos">
+							<div class="precio"><b>Valor: </b>${{traking.attributes.Precio}}</div>
+							<div class="precio"><b>Tienda: </b>{{traking.attributes.Tienda}}</div>
+							<div class="precio"><b>Fecha Estimada en Miami: </b>{{traking.attributes.FechaEstimadaMiami}}</div>
+						</div>
+					</div>
+					<div style="clear: both"></div>
+				</div>			
+			</div>
+	</div>
+</div>
+<div  style="clear:both; width: 100%; height: 20px;"></div>
+<p><br></p>
+
+</body>
+</html>

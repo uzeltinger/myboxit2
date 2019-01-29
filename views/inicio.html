@@ -1,0 +1,254 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+<!--Begin AutoPilot 
+<script type="text/javascript">(function(o){var b="https://api.autopilothq.com/anywhere/",t="cb7780893cf5421d9959efe45ff50119761aaf4c5b404556b3591ff3195936d8",a=window.AutopilotAnywhere={_runQueue:[],run:function(){this._runQueue.push(arguments);}},c=encodeURIComponent,s="SCRIPT",d=document,l=d.getElementsByTagName(s)[0],p="t="+c(d.title||"")+"&u="+c(d.location.href||"")+"&r="+c(d.referrer||""),j="text/javascript",z,y;if(!window.Autopilot) window.Autopilot=a;if(o.app) p="devmode=true&"+p;z=function(src,asy){var e=d.createElement(s);e.src=src;e.type=j;e.async=asy;l.parentNode.insertBefore(e,l);};y=function(){z(b+t+'?'+p,true);};if(window.attachEvent){window.attachEvent("onload",y);}else{window.addEventListener("load",y,false);}})({});</script>
+End AutoPilot -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WPBXCP9');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPBXCP9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --></body>
+<link href="../css/userStyle.css" rel="stylesheet" type="text/css" />
+<div class="row">
+	
+<!--<div class="col-sm-6 fondo">
+<h3 class="customLabel">Resumen de sus paquetes:</h3>
+
+<hr />
+<div class="row">
+<div class="col-sm-5"><span class="pull-right">Paquetes en Miami: {{miami}} </span><br />
+<span class="pull-right">Paquetes en Panama: {{panama}}</span><br />
+<span class="pull-right">Paquetes en el Boxit: {{boxit}}</span><br />
+<span class="pull-right">Paquetes entregados: {{entregado}}</span><br />
+<span class="pull-right">Total de paquetes: {{total}}</span></div>
+</div>--><!--    </div>-->
+
+<div class="col-sm-12 fondo areausuario-centro">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-9"><h1 class="customLabel user-welcome"> Bienvenido {{userName}} </h1></div>
+	
+	<div class="small-user-data">
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Nombre: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{username}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Apellido: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{lastname}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Email: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{UserEmail}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Teléfono: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{UserPhone}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Fecha Nacimiento: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{UserBirthdate}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Género: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{UserGender}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Boxit: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span>{{NamePlataforma}}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 customLabel">
+				<span class="pull-right">Saldo: </span>
+			</div>				
+			<div class="col-sm-7 form-group"><span><b>${{SaldoCliente}}</b></span>
+			</div>
+		</div>
+	</div>
+
+	<div id="UserAddress" ng-show="ShowUserAddress">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-9">
+		<h3 class="customLabel">Dirección Miami Plan {{userPlanName}}</h3>
+		</div>
+		<p><br></p>
+		<hr />
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Full Name : </span></div>
+			<div class="col-sm-7 form-group"><span>{{nombre}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 1: </span></div>
+			<div class="col-sm-7 form-group"><span>{{address1}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 2: </span></div>
+			<div class="col-sm-7 form-group"><span>{{address2}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">City : </span></div>
+			<div class="col-sm-7 form-group"><span>{{city}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">State : </span></div>
+			<div class="col-sm-7 form-group"><span>{{state}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Zip : </span></div>
+			<div class="col-sm-7 form-group"><span>{{zip}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Country : </span></div>
+			<div class="col-sm-7 form-group"><span>{{country}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Phone : </span></div>
+			<div class="col-sm-7 form-group"><span>{{tel}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11"><input checked="checked" ng-disabled="true" type="checkbox" /> <span> No delivering on weekends </span></div>
+		</div>
+	</div><!-- UserAddress -->
+	
+	<div id="defaultAddressPremium" ng-show="ShowDefaultAddressPremium">
+		<h3 class="customLabel">Dirección Miami Plan Premium</h3>
+		<br>
+		<div class="Description">La siguiente dirección es la que debes utilizar para hacer pedidos por internet, el nombre y código PTY siempre deben incluirse. </div>
+		<hr />
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Full Name : </span></div>
+			<div class="col-sm-7 form-group"><span>{{username}} {{lastname}} PTY{{IdClientePremium}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 1: </span></div>
+			<div class="col-sm-7 form-group"><span>7801 NW 37TH STREET</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 2: </span></div>
+			<div class="col-sm-7 form-group"><span>PTY{{IdClientePremium}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">City : </span></div>
+			<div class="col-sm-7 form-group"><span>DORAL</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">State : </span></div>
+			<div class="col-sm-7 form-group"><span>FL</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Zip : </span></div>
+			<div class="col-sm-7 form-group"><span>33195-6503</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Country : </span></div>
+			<div class="col-sm-7 form-group"><span>UNITED STATES</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Phone : </span></div>
+			<div class="col-sm-7 form-group"><span>{{tel}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11"><input checked="checked" ng-disabled="true" type="checkbox" /> <span> No delivering on weekends </span></div>
+		</div>
+	</div><!-- defaultAddressPremium -->
+	
+	<div id="defaultAddressBasica" ng-show="ShowDefaultAddressBasica">
+		<h3 class="customLabel">Dirección Miami Plan Básico</h3>
+		<br>
+		<div class="Description">La siguiente dirección es la que debes utilizar para hacer pedidos por internet, el nombre y código siempre deben incluirse. </div>
+		<hr />
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Full Name : </span></div>
+			<div class="col-sm-7 form-group"><span>{{username}} {{lastname}} B{{IdCliente}}</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 1: </span></div>
+			<div class="col-sm-7 form-group"><span>1345 NW 98TH CT, STE2</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Address 2: </span></div>
+			<div class="col-sm-7 form-group"><span>GEL 6406</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">City : </span></div>
+			<div class="col-sm-7 form-group"><span>Miami</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">State : </span></div>
+			<div class="col-sm-7 form-group"><span>Florida</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Zip : </span></div>
+			<div class="col-sm-7 form-group"><span>33172-2780</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Country : </span></div>
+			<div class="col-sm-7 form-group"><span>UNITED STATES</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3 customLabel"><span class="pull-right">Phone : </span></div>
+			<div class="col-sm-7 form-group"><span>7863602816</span></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11"><input checked="checked" ng-disabled="true" type="checkbox" /> <span> No delivering on weekends </span></div>
+		</div>
+	</div><!-- defaultAddressBasica -->
+
+</div>
+</html>

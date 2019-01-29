@@ -1,0 +1,116 @@
+<script src="../js/controllers/anunciarPaqueteController.js" type="text/javascript"></script>
+
+<link href="../css/userStyle.css" rel="stylesheet" type="text/css"/>
+
+<toast></toast>
+
+<div class="row anunciarPaquete">
+
+    <div class ="col-sm-2"></div>
+
+    <div class="col-sm-6">
+
+        <h3 class="customLabel">Alertar Paquete</h3>
+
+        <hr>
+
+        <h5 class="customLabel">Alerta tus paquetes para evitar generar retrasos en Miami y el proceso aduanal en Panamá.</h5>
+         <h5 class="customLabel">Debes realizar una alerta por cada número de tracking.</h5>
+        <div class="Description">Los campos marcados <font color="red"> *</font> son obligatorios</div>
+        <hr>
+
+        <div class="form-group">
+
+            <label class="customLabel">  Número Tracking:<font color="red"> *</font></label>
+
+            <input type="text" class="form-control" ng-model="TrackingNumber"  placeholder="coloque su número de tracking">
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="customLabel">Tienda donde compró: <font color="red"> *</font></label>
+
+            <input type="text" class="form-control" ng-model="Shop" placeholder="coloque su tienda">
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="customLabel"> Valor de la Compra: <font color="red"> *</font> </label>
+
+            <input type="number" class="form-control" ng-model="Value" placeholder="coloque el costo">
+
+        </div>
+
+        <div class="">
+            <label for="birth" class="customLabel">Fecha estimada de llegada a Miami del producto:</label>
+        </div>
+
+        <div class="input-group">
+            
+               
+                
+                    <input style="border: 2px solid #cdcdcd;float: left" uib-datepicker-popup="{{format}}" 
+                        class ="form-control" ng-model="arraivalDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">      
+        
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                
+            
+
+            
+
+                      
+
+        </div>       
+
+        <div class="form-group">
+
+            <label for="birth" class="customLabel">Categoría:<font color="red"> *</font></label>
+
+            <select default="" id="select_categories_es" class="form-control" ng-model="category"> 
+                <option ng-repeat="category in categoriesListEs" value="{{category.code}}">{{category.texto}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label class="customLabel"> Descripción: <font color="red"> *</font></label>
+
+            <textarea   class="form-control" rows="5" ng-model="Description" placeholder="Ingrese el contenido exacto de su compra"></textarea>
+
+        </div>
+        <h5 class="customLabel">Debe adjuntar la factura de su compra:</h5>
+        <div class="form-group">
+            <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-pattern=".doc,.docx,.pdf,image/*"
+                    accept=".pdf,image/*" ngf-max-height="2000" ngf-max-size="5MB" ngf-multiple="multiple" ng-multiple="true">
+                Adjuntar Factura</button>
+            <br><br>
+            Factura: Formato de imagen (JPG, PNG, DOC o PDF)
+            <div style="font:smaller">{{f.name}} {{errFile.text}} 
+                <span class="progress" ng-show="f.progress >= 0">
+                    <div style="width:{{f.progress}}%"  
+                        ng-bind="f.progress + '%'"></div>
+                </span>
+            </div>     
+            {{errorMsg}}
+        </div>
+
+        <div>
+
+            <div class="Submit">
+
+                <!--<input type="submit"  value="REGISTRARME">-->
+
+                <button class="Button WithBackground" ng-click="anunciar()">Alertar Paquete</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

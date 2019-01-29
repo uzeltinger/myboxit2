@@ -1,0 +1,210 @@
+<link href="../css/userStyle.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+    <div class ="col-sm-2"></div>
+
+    <div class="col-sm-6">
+
+        <h3 class="customLabel">Información de Perfil</h3>
+
+        <hr>
+
+        <div class="form-group">
+
+            <label for ="usr" class="customLabel">  Nombre: </label>
+
+
+
+            <input type="text"  class="form-control" id="usr" ng-model="username">
+
+
+
+        </div>
+
+        <div class="form-group">
+
+            <label for ="apellido" class="customLabel" >   Apellido:</label>
+
+            <input type="text" class="form-control" id="apellido" ng-model="lastname">
+
+
+
+        </div>
+
+        <div class="form-group">
+
+            <label for ="mail" class="customLabel">   Email:</label>
+
+            <input type="text"  class="form-control" id="mail" ng-model="UserEmail">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="phone" class="customLabel"> Teléfono: </label>   
+
+            <input type="text" class="form-control" id="phone"  placeholder="Ingrese su telefono" ng-model="UserPhone">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="birth" class="customLabel">
+
+                Fecha de nacimiento: {{format}}</label>
+
+
+
+        <div class="form-group">
+                <div class="input-group date">
+                    <input type="text" name="UserBirthdate"  class="form-control"  ng-model="UserBirth_date" jqdatepicker>
+                    <span class="input-group-addon" data-toggle="datepicker" style="cursor: pointer;" >
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span></input>
+                </div>
+            </div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <div class="FieldContent">
+
+                <input style="border: 2px solid #cdcdcd;float: left" uib-datepicker-popup="{{format}}" 
+
+                       class ="form-control"
+
+                       ng-model="UserBirthdate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+
+                
+
+
+
+                <button type="button" style="float: right" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+
+            </div>  -->
+        </div>
+
+        <br>
+
+        <br>
+
+        <div class="form-group">
+
+            <label for="gender" class="customLabel">Género:</label>
+
+            <select name="" class="form-control" id="gender" ng-model="UserGender">
+
+                <option value="">Seleccione un Género</option>
+
+                <option value="H">Masculino</option>
+
+                <option value="M">Femenino</option>
+
+            </select>
+
+
+
+        </div>
+
+
+
+        <div class="tarifaplan">
+            <div class="container-fluid">       
+                <div class="row">
+                    <div class="col-xs-6 tarifa-left">
+                        <div class="tarifa" ng-class="{'tarifaselected': IdTipoPlan==2}">
+                            <label class="radio-inline tarifa-titulo">
+                                <input ng-model="IdTipoPlan" type="radio" name="IdTipoPlan" id="IdTipoPlan1" value="2"> Plan Premium
+                            </label>
+                            <p class="tarifa-row">Traemos tu compra de 3 a 5 días desde que llega a Miami.</p>
+                            <p class="tarifa-row">Libra en 4.5$</p>
+                            <p class="tarifa-row">Cargos por paquete<br>1$ de Seguro y 2$ Manejo</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 tarifa-right">
+                        <div class="tarifa" ng-class="{'tarifaselected': IdTipoPlan==1}">
+                            <label class="radio-inline tarifa-titulo cancheck">
+                                <input ng-model="IdTipoPlan" type="radio" name="IdTipoPlan" id="IdTipoPlan2" value="1"> Plan Básico
+                            </label>
+                            <p class="tarifa-row">Traemos tu compra de 5 a 7 días desde que llega a Miami.</p>
+                            <p class="tarifa-row">Libra en 4.5$</p>
+                            <p class="tarifa-row">Sin cargos por paquete<br><br></p>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="IdTipoPlan" id="IdTipoPlan">
+            </div>
+        </div>
+  <br>
+
+        <br>
+
+
+        <div>
+
+            <div class="Submit">
+
+                <!--<input type="submit"  value="REGISTRARME">-->
+
+                <button class="Button WithBackground" ng-click="Update()">Guardar Cambios</button>
+
+            </div>
+
+
+
+
+
+        </div>
+
+       
+
+    </div>
+
+</div>
+<style type="text/css">
+    .datepicker,
+.table-condensed {
+  width: 320px;
+  height:320px;
+}
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+
+
+
+
+
+
+        $(".tarifa-titulo").on('click', function(event) {           
+            $(".tarifa").removeClass("tarifaselected");
+            $(".tarifa-titulo").addClass( "cancheck" );
+            $( this ).removeClass("cancheck");          
+            $( this ).parent().addClass( "tarifaselected" );
+            //console.log("$this.parent()",$( this ).parent());
+        });
+    });
+</script>
