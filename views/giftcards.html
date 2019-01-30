@@ -99,14 +99,16 @@
                         <div class="product-item-actions">
                             <div class="actions-primary actions add-to-cart">
                                 <div class="actions add-to-cart">
-                                    <div class="botonwhatsapp">
+                                    <!--<div class="botonwhatsapp">
                                         <a class="wpurl" href="{{wpurl}}" title="Pedir por Whatsapp" target="_blank" ng-click="goToWhatsapp(wpurl,item.Title)"><span>Pedir por Whatsapp</span></a>
-                                    </div>
-                                    <div >
-                                         <button type="button" title="Add to Cart" class="action primary tocart button btn-cart botonañadircarrito" id="product-addtocart-button" data-goimage="item-image"
-                                            ng-click="addToCar(item)" ng-disabled="disabledAdd" disabled="disabled">
-                                            <span>Añadir al Carrito</span>
-                                        </button>
+                                    </div>-->
+                                    <div>
+                                        <span class="input-group-btn" uib-tooltip="{{tooltip}}" tooltip-trigger="click" tooltip-placement="top">
+                                            <button type="button" title="Add to Cart" class="action primary tocart button btn-cart botonañadircarrito" id="product-addtocart-button" data-goimage="item-image"
+                                                ng-click="addToCar(item)" ng-disabled="disabledAdd" disabled="disabled">
+                                                <span>Añadir al Carrito</span>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

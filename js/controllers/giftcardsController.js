@@ -14,18 +14,25 @@ angular
             $scope.carNumber = "";
             $scope.UserName = "Invitado";
             var userObj =  userData.getData();
+            /*if (usrObj != undefined) {
+                userId = usrObj.IdCliente;
+                $scope.UserName = usrObj.UserName;
+            } else {
+                userId = 0;
+            }*/
+            //$scope.userNotLogged = usrObj === undefined;
             
             if (userObj != undefined) {
                 userId = userObj.IdCliente;
                 $scope.UserName = userObj.UserName;
                  id = userObj.IdCliente;
+                 $scope.userNotLogged = false;
             } else {
                 userId = 0;
                 $scope.UserName = "Invitado";
                  id = 0;
+                 $scope.userNotLogged = true;
             }
-
-
 
             var getItemsRusia2018 = function (item) {
                 oldItems = [];
@@ -184,33 +191,39 @@ angular
                 $localStorage.modalIns.close();
             };
             $scope.addToCar = function (item) {
-                moveToCart();
-                $scope.itemadded = item;
-                console.log('addToCar itemadded',item);
-                console.log('TITULO 3',$scope.itemadded.Title);
-                var args = {};
-                    args["IdCliente"] = userData.getData().IdCliente;                    
-                    args["ItemId"] = $scope.itemadded.ItemId;
-                    args["OfferListingId"] = "";
-                    args["Price"] = $scope.itemadded.Price;                   
-                    args["Height"] = 0;
-                    args["Length"] = 0;
-                    args["Width"] = 0;
-                    args["Weight"] = 0;
-                    args["UrlImage"] = $scope.itemadded.ImageUrl;
-                    args["Title"] = $scope.itemadded.Title;
-                    args["Quantity"] = "1";
+                if($scope.userNotLogged){
+                    $scope.tooltip = "Por favor iniciar sesion para añadir articulos"
+                }else{
+                    $scope.tooltip="";
                 
-                console.log('args', args);
-                
-                userData.addItemToCar(args).then(function success(result) {
-                    //refreshCarNumber(result);
-                    calcularTotal(result);
-                    //$uibModalInstance.close();
-                    console.log('addItemToCar', result);
-                }, function error(result) {
-                    console.log(result);
-                });
+                    moveToCart();
+                    $scope.itemadded = item;
+                    console.log('addToCar itemadded',item);
+                    console.log('TITULO 3',$scope.itemadded.Title);
+                    var args = {};
+                        args["IdCliente"] = userData.getData().IdCliente;                    
+                        args["ItemId"] = $scope.itemadded.ItemId;
+                        args["OfferListingId"] = "";
+                        args["Price"] = $scope.itemadded.Price;                   
+                        args["Height"] = 0;
+                        args["Length"] = 0;
+                        args["Width"] = 0;
+                        args["Weight"] = 0;
+                        args["UrlImage"] = $scope.itemadded.ImageUrl;
+                        args["Title"] = $scope.itemadded.Title;
+                        args["Quantity"] = "1";
+                    
+                    console.log('args', args);
+                    
+                    userData.addItemToCar(args).then(function success(result) {
+                        //refreshCarNumber(result);
+                        calcularTotal(result);
+                        //$uibModalInstance.close();
+                        console.log('addItemToCar', result);
+                    }, function error(result) {
+                        console.log(result);
+                    });
+                }
             };
             var refreshCar = function (result) {
                 $scope.showCarItems = false;
@@ -342,8 +355,11 @@ angular
               function calcularTotal(carItems) {
                 userData.getAmazonCountItemCart(userId).then(function success(result) {       
                     console.log(result);  
-                    $scope.carNumber = result.data.Data.Cart.Quantity;
-                    return result.data.Data.Cart.Quantity;
+                    if(result.data.Data.Cart!=undefined){
+                        $scope.carNumber = result.data.Data.Cart.Quantity;
+                        return result.data.Data.Cart.Quantity;
+                    }
+                    
                 }, function error(result) {
                     console.log(result);
                 });               

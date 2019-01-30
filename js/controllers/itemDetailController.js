@@ -103,7 +103,7 @@ angular
                 currentItemObject = item;
                 //console.log('setItemData currentItemObject',currentItemObject);
                 $scope.itemCode = currentIdItem;
-                $scope.userNotLogged = usrObj === undefined;
+                $scope.userNotLogged = usrObj === undefined; 
                 $scope.titulo = item.Item.Attributes.Title;
                 $scope.texto = getDescription(item).trim();
                 $scope.imgUrl = item.Item.Image.ImageUrl;                
