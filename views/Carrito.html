@@ -53,7 +53,7 @@
             <tr class="first odd" ng-repeat="item in carItems">        
                 <td class="block-img test">
                     <div style=" text-align:center;">
-                        <a href="#" target="_blank">
+                        <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">
                             <img id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive" src="{{item.UrlImage}}" alt="{{item.Title}}">
                         </a>
                     </div>
