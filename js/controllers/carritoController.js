@@ -1005,6 +1005,15 @@ console.log('answer',answer);
                 $scope.$on("$destroy", function handler() {
                     $('.navbar').removeClass('white');
                 });            
-                $('.navbar').addClass('white');                
+                $('.navbar').addClass('white');     
                 
+                $scope.goItemDetail = function (ItemId) {
+                    console.log('ItemId',ItemId);
+                    if(ItemId=="B076MH69JV" || ItemId=="B076MH69JV-2" || ItemId=="B076MH69JV-3" || ItemId=="B00G3LBDDS" || ItemId=="B00G3LBDDS-2" ){
+                        $window.location.href = "/giftcards";
+                    }else{
+                        $window.location.href = "/itemDetail/"+ItemId;
+                    }
+                    //ui-sref="itemDetail({itemId: item.ItemId})"
+                }                
         }]);

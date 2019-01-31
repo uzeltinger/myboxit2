@@ -44,7 +44,7 @@
                                         <tr class="first odd" ng-repeat="item in carItems">
                                             <td class="block-img test">
                                                 <div style=" text-align:center;">
-                                                    <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">
+                                                    <a style="cursor: pointer" ng-click="goItemDetail(item.ItemId)" target="_blank">
                                                         <img id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive"
                                                             src="{{item.UrlImage}}" alt="{{item.Title}}">
                                                     </a>
@@ -53,7 +53,7 @@
 
                                             <td>
                                                 <h2 class="product-name">
-                                                    <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">{{item.Title}}</a>
+                                                    <a style="cursor: pointer" ng-click="goItemDetail(item.ItemId)" target="_blank">{{item.Title}}</a>
                                                 </h2>
                                                 <ul class="item-options">
                                                     <li>
