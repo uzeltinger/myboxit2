@@ -1,260 +1,280 @@
 <section class="carrito">
-	<div class="boxitBar-top-separator">
-        
-	</div>		
-	<div class="container-fluid" id="carrito-box">			
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<h1>Carrito <span ng-show="CartEmpty"> Vacío.</span></h1>
-			</div>
-		</div>
+    <div class="boxitBar-top-separator">
 
-		<div class="row">
-            <div class="col-xs-12">               
-
-
-<div class="carrito-container">
-    <div id="cssload-pgloading" ng-show="loading">
-        <div class="cssload-loadingwrap">
-            <ul class="cssload-bokeh">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
     </div>
-</div>
+    <div class="container-fluid" id="carrito-box">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Carrito <span ng-show="CartEmpty"> Vacío.</span></h1>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xs-12">
 
-
-
-
-
-
-
-
-
-
-
-<div class="boxit-shopping-cart" ng-show="mostrarBoxitShoppingCart">
-    <table id="shopping-cart-table" class="data-table cart-table">
-        <thead>
-            <tr class="first last">
-                <td colspan="2" class="a-center">Producto</td>
-                <td class="a-center">Cantidad</td>
-                <td class="a-center">Eliminar</td>
-                <td class="a-center">Valor Unitario</td>
-                <td class="a-center last">Valor Total</td>
-            </tr>
-        </thead>
-        <tbody class="notranslate">
-
-            <tr class="first odd" ng-repeat="item in carItems">        
-                <td class="block-img test">
-                    <div style=" text-align:center;">
-                        <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">
-                            <img id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive" src="{{item.UrlImage}}" alt="{{item.Title}}">
-                        </a>
-                    </div>
-                </td>
-                
-                <td>
-                    <h2 class="product-name">
-                        <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">{{item.Title}}</a>
-                    </h2>
-                    <ul class="item-options">                                
-                        <li>        
-                            <em><span ng-class="{'weight-bold' : item.Weight == 0 }">Peso: {{item.Weight}} lbs.</span></em>
-                        </li>        
-                    </ul>
-                </td>
-                <td class="a-center cart_qty">
-                    <div class="cart-qty">
-                            
-                    <button class="btn22 btn-update" ng-click="modifyCar(0, item)"><span class="minus">-</span></button>
-                        <input type="text" readonly="readonly" value="{{item.Quantity}}" class="input-text qty" size="2">
-                    <button class="btn22 btn-update" ng-click="modifyCar(1, item)"><span class="plus">+</span></button>
-                    </div>
-                </td>
-                <td class="a-center td-delete">
-                    <div class="cart-remove">
-                        <a title="Eliminar" class="btn-remove2" ng-click="modifyCar(2, item)">Eliminar</a>
-                    </div>
-                </td>
-                <td class="a-center notranslate">
-                    <span class="cart-price">        
-                        <span class="price currency_price">$ {{item.Price}}</span>
-                    </span>
-                </td>
-                <td class="a-center notranslate last">
-                    <span class="price">
-                        <span class="price currency_price">$ {{item.TotalPrice}}</span>
-                    </span>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-
-    <div id="cartitemsmobile" class="container-fluid data-table cart-table">
-            <div class="row" ng-repeat="item in carItems">
-                <div class="col-12">
-                    <img class="img-responsive" id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive" src="{{item.UrlImage}}" alt="{{item.Title}}">
-                </div>
-                <div class="col-12">
-                    <h2 class="product-name">
-                        <a target="_blank" class="ng-binding">{{item.Title}}</a>
-                    </h2>
-                    <ul class="item-options">                                
-                        <li>        
-                            <em class="ng-bindingaa" ><span ng-class="{'weight-bold' : item.Weight == 0 }">Peso: {{item.Weight}} lbs.</span></em>
-                        </li>   
-                        <li>        
-                            <em class="ng-binding">Valor Unitario: <span class="price currency_price ng-binding">{{item.Price}}</span></em>
-                        </li>
-                        <li>        
-                            <em class="ng-binding">Valor Total: <span class="price currency_price ng-binding">{{item.TotalPrice}}</span></em>
-                        </li>      
-                    </ul>
-                </div>
-                <div class="col-xs-7">
-                    <div class="a-center cart_qty">
-                        <div class="cart-qty">                                
-                            <button class="btn22 btn-update" ng-click="modifyCar(0, item)"><span class="minus">-</span></button>
-                            <input type="text" readonly="readonly" value="{{item.Quantity}}" class="input-text qty" size="2">
-                            <button class="btn22 btn-update" ng-click="modifyCar(1, item)"><span class="plus">+</span></button>
+                <div class="carrito-container">
+                    <div id="cssload-pgloading" ng-show="loading">
+                        <div class="cssload-loadingwrap">
+                            <ul class="cssload-bokeh">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-5">
-                    <div class="a-center td-delete">
-                        <div class="cart-remove">
-                            <a title="Eliminar" class="btn-remove2" ng-click="modifyCar(2, item)">Eliminar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12"><hr></div>
-               
-            </div>    
-        </div>
 
+                <div class="boxit-shopping-cart" ng-show="mostrarBoxitShoppingCart">
+                    <div class="cart-items-container container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <table id="shopping-cart-table" class="data-table cart-table">
+                                    <thead>
+                                        <tr class="first last">
+                                            <td colspan="2" class="a-center">Producto</td>
+                                            <td class="a-center">Cantidad</td>
+                                            <td class="a-center">Eliminar</td>
+                                            <td class="a-center">Valor Unitario</td>
+                                            <td class="a-center last">Valor Total</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="notranslate">
 
-    <div class="cart-container">        
-    <div class="cart-disclaimers">
-            <p>El monto de Comisión y Transporte incluye el traslado del paquete a Panamá.</p>
-            <p>Los costos extras del paquete, ya sea trámites o impuestos de importación deben pagarse en el momento de retiro.</p>
-            <p>Las devoluciones no dependen de Boxit sino del proveedor de Amazon, por ende, los gastos serán cargados al cliente.</p>
-            <p>No contamos con la información del peso de algunos productos, por lo que en este caso, el costo del envío será cobrado al retirar el paquete.</p>
-             <p>Mas información <a ui-sref="faq" class="link-informacion-faq">Aqui</a>.</p>
-    </div>
-                    <div class="cart-summary">
-                        <div class="cart-totals">
-                            <div class="table-wrapper">
-                                <table class="data table totals">
-                                    <caption class="table-caption">Total</caption>
-                                    <tbody>
-                                        <tr class="totals sub">
-                                            <th class="texto">Subtotal</th>
-                                            <td class="simbolPrice">$</td>
-                                            <td align="right" class="amount"><span class="price" ng-bind="subTotal"></span>
+                                        <tr class="first odd" ng-repeat="item in carItems">
+                                            <td class="block-img test">
+                                                <div style=" text-align:center;">
+                                                    <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">
+                                                        <img id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive"
+                                                            src="{{item.UrlImage}}" alt="{{item.Title}}">
+                                                    </a>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <h2 class="product-name">
+                                                    <a ui-sref="itemDetail({itemId: item.ItemId})" target="_blank">{{item.Title}}</a>
+                                                </h2>
+                                                <ul class="item-options">
+                                                    <li>
+                                                        <em><span ng-class="{'weight-bold' : item.Weight == 0 }">Peso:
+                                                                {{item.Weight}} lbs.</span></em>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                            <td class="a-center cart_qty">
+                                                <div class="cart-qty">
+
+                                                    <button class="btn22 btn-update" ng-click="modifyCar(0, item)"><span
+                                                            class="minus">-</span></button>
+                                                    <input type="text" readonly="readonly" value="{{item.Quantity}}"
+                                                        class="input-text qty" size="2">
+                                                    <button class="btn22 btn-update" ng-click="modifyCar(1, item)"><span
+                                                            class="plus">+</span></button>
+                                                </div>
+                                            </td>
+                                            <td class="a-center td-delete">
+                                                <div class="cart-remove">
+                                                    <a title="Eliminar" class="btn-remove2" ng-click="modifyCar(2, item)">Eliminar</a>
+                                                </div>
+                                            </td>
+                                            <td class="a-center notranslate">
+                                                <span class="cart-price">
+                                                    <span class="price currency_price">$ {{item.Price}}</span>
+                                                </span>
+                                            </td>
+                                            <td class="a-center notranslate last">
+                                                <span class="price">
+                                                    <span class="price currency_price">$ {{item.TotalPrice}}</span>
+                                                </span>
                                             </td>
                                         </tr>
-                                        <tr class="totals sub">
-                                            <th class="texto">Comisión y Transporte</th>
-                                            <td class="simbolPrice">$</td>
-                                            <td align="right" class="amount">
-                                                <span class="price" ng-bind="carCommission"></span>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr class="grand totals">
-                                            <th class="texto">
-                                                <strong>Orden Total</strong>
-                                            </th>
-                                            <td class="simbolPrice">$</td>
-                                            <td align="right" class="amount">
-                                                <strong><span class="price" ng-bind="carTotal"></span></strong>
-                                            </td>
-                                        </tr>
-                                        <tr >
-                                            <th colspan="3">
-                                               <h6><i> *No incluye impuestos de aduana </i></h6>                                       
-                                            </th>
-                                            <td class="amount">
-                                            
-                                            </td>
-                                        </tr>
-                                         <tr ng-if="mostrarDisclaimerPesoCero">
-                                            <th colspan="3">
-                                                <h6><i> *El costo del envío de alguno de los ítems será cobrado al retirar el paquete. </i></h6>                                       
-                                            </th>                                                
-                                        </tr>
-                                        
 
                                     </tbody>
                                 </table>
-                            </div>    
-                        </div>
-                         <div class="pagar-botones">
-                            <div class="formasdepago">
-                                 <div ><span>Seleccione la forma de pago:</span></div>
-                                <div class="formadepago-container efectivo">
+                            </div>
 
-                                    <label>
-                                        <input type="radio" class="radio-inline" name="formadepago" 
-                                        ng-model="formadepago" value="1">
-                                        <span class="outside">
-                                            <span class="inside"></span>
-                                        </span>
-                                        <div class="formadepago efectivo">Efectivo</div>
-                                    </label>
+                            <div id="cartitemsmobile" class="container-fluid data-table cart-table">
+                                <div class="row" ng-repeat="item in carItems">
+                                    <div class="col-12">
+                                        <img class="img-responsive" id="image-{{item.ItemId}}-default" class="product-image-photo img-responsive"
+                                            src="{{item.UrlImage}}" alt="{{item.Title}}">
+                                    </div>
+                                    <div class="col-12">
+                                        <h2 class="product-name">
+                                            <a target="_blank" class="ng-binding">{{item.Title}}</a>
+                                        </h2>
+                                        <ul class="item-options">
+                                            <li>
+                                                <em class="ng-bindingaa"><span ng-class="{'weight-bold' : item.Weight == 0 }">Peso:
+                                                        {{item.Weight}} lbs.</span></em>
+                                            </li>
+                                            <li>
+                                                <em class="ng-binding">Valor Unitario: <span class="price currency_price ng-binding">{{item.Price}}</span></em>
+                                            </li>
+                                            <li>
+                                                <em class="ng-binding">Valor Total: <span class="price currency_price ng-binding">{{item.TotalPrice}}</span></em>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="a-center cart_qty">
+                                            <div class="cart-qty">
+                                                <button class="btn22 btn-update" ng-click="modifyCar(0, item)"><span
+                                                        class="minus">-</span></button>
+                                                <input type="text" readonly="readonly" value="{{item.Quantity}}" class="input-text qty"
+                                                    size="2">
+                                                <button class="btn22 btn-update" ng-click="modifyCar(1, item)"><span
+                                                        class="plus">+</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="a-center td-delete">
+                                            <div class="cart-remove">
+                                                <a title="Eliminar" class="btn-remove2" ng-click="modifyCar(2, item)">Eliminar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <hr>
+                                    </div>
 
                                 </div>
+                            </div>
 
-                                <div class="formadepago-container nequi">
 
-                                    <label>
-                                        <input type="radio"class="radio-inline" name="formadepago" 
-                                        ng-model="formadepago" value="0">
-                                        <span class="outside">
-                                            <span class="inside"></span>
-                                        </span>
-                                        <div class="formadepago nequi">NEQUI</div>
-                                    </label>
+                            <div class="col-12 col-lg-4">
 
+                                <div class="cart-summary">
+                                    <div class="cart-totals">
+                                        <div class="table-wrapper">
+                                            <table class="data table totals">
+                                                <caption class="table-caption">Total</caption>
+                                                <tbody>
+                                                    <tr class="totals sub">
+                                                        <th class="texto">Subtotal</th>
+                                                        <td class="simbolPrice">$</td>
+                                                        <td align="right" class="amount"><span class="price" ng-bind="subTotal"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="totals sub">
+                                                        <th class="texto">Comisión y Transporte</th>
+                                                        <td class="simbolPrice">$</td>
+                                                        <td align="right" class="amount">
+                                                            <span class="price" ng-bind="carCommission"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="grand totals">
+                                                        <th class="texto">
+                                                            <strong>Orden Total</strong>
+                                                        </th>
+                                                        <td class="simbolPrice">$</td>
+                                                        <td align="right" class="amount">
+                                                            <strong><span class="price" ng-bind="carTotal"></span></strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="3">
+                                                            <h6><i> *No incluye impuestos de aduana </i></h6>
+                                                        </th>
+                                                        <td class="amount">
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-if="mostrarDisclaimerPesoCero">
+                                                        <th colspan="3">
+                                                            <h6><i> *El costo del envío de alguno de los ítems será
+                                                                    cobrado al
+                                                                    retirar el paquete. </i></h6>
+                                                        </th>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="pagar-botones">
+                                        <div class="formasdepago">
+                                            <div><span>Seleccione la forma de pago:</span></div>
+                                            <div class="formadepago-container efectivo">
+
+                                                <label>
+                                                    <input type="radio" class="radio-inline" name="formadepago"
+                                                        ng-model="formadepago" value="1">
+                                                    <span class="outside">
+                                                        <span class="inside"></span>
+                                                    </span>
+                                                    <div class="formadepago efectivo">Efectivo</div>
+                                                </label>
+
+                                            </div>
+
+                                            <div class="formadepago-container nequi">
+
+                                                <label>
+                                                    <input type="radio" class="radio-inline" name="formadepago"
+                                                        ng-model="formadepago" value="0">
+                                                    <span class="outside">
+                                                        <span class="inside"></span>
+                                                    </span>
+                                                    <div class="formadepago nequi">NEQUI</div>
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="pagar-en-efectivo">
+                                        <button type="button" ng-click="purchase()" title="Pagar en efectivo" class="action primary checkout">
+                                            <span>Pagar</span>
+                                        </button>
+                                    </div>
                                 </div>
 
                             </div>
+                        </div>
 
-                        </div>
-                        <div class="pagar-en-efectivo">
-                            <button type="button" ng-click="purchase()" title="Pagar en efectivo" class="action primary checkout">
-                                <span>Pagar</span>
-                            </button>
-                        </div>
                     </div>
-    
-                <div class="action-buttons" ng-show="shopping">            
-                    <div class="cart-actions">                        
-                        <button type="submit" ng-click="clearShoppingCar()" name="update_cart_action" value="empty_cart" title="Clear Shopping Cart" class="action clear">
-                            <span>Limpiar Carrito</span>
-                        </button>
-                        <button type="submit" ng-click="continueBuying()" name="continue" value="continue" title="Update Shopping Cart" class="action continue">
-                            <span>Continuar Comprando</span>
-                        </button>
+
+                    <div class="cart-container">
+                        <div class="cart-disclaimers">
+                            <p>El monto de Comisión y Transporte incluye el traslado del paquete a Panamá.</p>
+                            <p>Los costos extras del paquete, ya sea trámites o impuestos de importación deben pagarse
+                                en el momento de retiro.</p>
+                            <p>Las devoluciones no dependen de Boxit sino del proveedor de Amazon, por ende, los gastos
+                                serán cargados al cliente.</p>
+                            <p>No contamos con la información del peso de algunos productos, por lo que en este caso,
+                                el costo del envío será cobrado al retirar el paquete.</p>
+                            <p>Mas información <a ui-sref="faq" class="link-informacion-faq">Aqui</a>.</p>
+                        </div>
+
+                        <div class="action-buttons" ng-show="shopping">
+                            <div class="cart-actions">
+                                <button type="submit" ng-click="clearShoppingCar()" name="update_cart_action" value="empty_cart"
+                                    title="Clear Shopping Cart" class="action clear">
+                                    <span>Limpiar Carrito</span>
+                                </button>
+                                <button type="submit" ng-click="continueBuying()" name="continue" value="continue"
+                                    title="Update Shopping Cart" class="action continue">
+                                    <span>Continuar Comprando</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
-    
-</div>
-<div class="container-fluid">			
-<div class="row">
-    <div class="col-md-12 text-center"><p><br></p></div>
-</div>
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p><br></p>
+            </div>
+        </div>
+    </div>
 </section>
