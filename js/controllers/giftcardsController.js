@@ -6,14 +6,25 @@ item.ItemId
         */
 angular
     .module('boxit')
-            .controller('giftcardsController', ['$scope', '$stateParams', 'userData', '$uibModal', '$q' , '$window','$http', '$state',
-            function ($scope, $stateParams, userData, $uibModal, $q, $window, $http, $state) {
+            .controller('giftcardsController', ['$scope', '$stateParams', 'userData', '$uibModal', '$q' , '$window','$http', '$state', '$location',
+            function ($scope, $stateParams, userData, $uibModal, $q, $window, $http, $state, $location) {
             //localStorage.removeItem('myWishList');
             $scope.showCar = true;
             $scope.showCarItems = false;
             $scope.carNumber = "";
             $scope.UserName = "Invitado";
             var userObj =  userData.getData();
+            $scope.subCategories = [];
+            $scope.showSubCategories = false;
+            $scope.topCategory = "";
+            $scope.showLeftCategories = false;
+            $scope.categoriesList = [];
+            $scope.subCategoriesList = [];
+            $scope.subCategory = '';
+            $scope.categoryTexto = "Categorías";
+            $scope.showLeftCategories = true;
+            obtenerCategoriesListEs();
+
             /*if (usrObj != undefined) {
                 userId = usrObj.IdCliente;
                 $scope.UserName = usrObj.UserName;
@@ -109,7 +120,7 @@ angular
                     'FormattedPrice' : "$30.00"                    
                 };
                 oldItems.push(newItem); 
-                /*var newItem = {
+                /*var newItem = { 
                     'ItemId': "B078J1RSSB",
                     'ImageUrl': "img/giftcards/gift-card-netflix.jpg",
                     'Title': "Netflix Gift Cards - E-mail Delivery",
@@ -439,6 +450,168 @@ angular
 
             $scope.doTheBack = function() {
                 window.history.back();
-              };//ng-click="doTheBack()"            
+            };//ng-click="doTheBack()"
+
+            $scope.mostrarProductos = function (subCategory, subCategoryTexto, categoryValue, categoryTexto) {
+                //console.log('mostrarProductos');
+                $scope.mostrarlabusquedanoarrojoresultados = false;
+                $scope.showStoreBreadcrumb = true;
+                $scope.subCategoryTexto = subCategoryTexto;
+                $scope.breadcrumbSubCategoryTexto = subCategoryTexto;
+                $scope.categoriaTexto = categoryTexto;
+                $scope.categoryTexto = categoryTexto;
+                //var element = document.getElementById("buttonShowCategories");
+                //$(element).click();
+
+                $location.path('/boxitStore/' + categoryValue + ',' + subCategory + ',');
+                
+
+            }
+
+            function getSubcategoryText(sid) {
+                $scope.subCategoriesEs = [];
+                $http.get('subcategorias_es.csv').then(function (datos) {
+                    $scope.subCategoriesEs = csvToArray(datos.data);
+                    $scope.breadcrumbSubCategoryTexto = $scope.subCategoriesEs[sid];
+                });
+            }
+
+            function getSubCategories(category) {
+                var defered = $q.defer();
+                var promise = defered.promise;
+                $http({
+                    method: "POST",
+                    url: userData.getHost() + "/amazon/amazongetcategories",
+                    data: {
+                        "SearchIndex": category
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function success(result) {
+                    defered.resolve(result);
+                }, function error(result) {
+                    defered.reject(result);
+                });
+                return promise;
+            }
+
+            $scope.setSubCategories = function () {
+                localStorage.setItem("atributoSearchIndexSelected", this.index.attributes.SearchIndex);
+
+                getSubCategories(this.index.attributes.SearchIndex).then(function success(result) {
+
+                    $scope.subCategories = result.data;
+                    $scope.showSubCategories = true;
+                }, function error(result) {
+
+                    $scope.showSubCategories = false;
+                });
+            };
+
+            function obtenerSubcategorias(catIndex) {
+                ////console.log('$scope.categoriesList',$scope.categoriesList[catIndex].subcategorias);
+                return $scope.categoriesList[catIndex].subcategorias;
+            }
+            $scope.mostrarSubcategorias = function (topCategory, catIndex) {
+                $scope.topCategory = topCategory;
+                if ($scope.topCategoryLastSelected == topCategory) {
+                    $scope.showSubCategoriAs = 0;
+                    $scope.topCategoryLastSelected = 0;
+                } else {
+                    $scope.topCategoryLastSelected = topCategory;
+                    categoryClick(topCategory);
+                    $scope.subCategoriAs = obtenerSubcategorias(catIndex);
+                    //obtenerSubcategorias(catIndex).then(function success(result) {  
+                    $scope.showSubCategoriAs = topCategory;
+                    //$scope.subCategoriAs = result.data;                        
+                    //}, function error(result) {
+                    //////console.log(result);
+                    //$scope.showSubCategoriAs = false;
+                    //});
+                }
+            };
+
+            function categoryClick(category) {
+                angular.forEach($scope.indexs, function (value, key) {
+                    if (value.attributes.SearchIndex == category) {
+                        $scope.index = value;
+                    }
+                });
+                //$scope.setSubCategories();
+            }
+
+            function subCategoryClick(subCategory) {
+                angular.forEach($scope.subCategories, function (value, key) {
+                    //////console.log("value" , value );
+                    if (value.SubCategoryId == subCategory) {
+                        $scope.subCategory = value;
+                    }
+                });
+
+                //showProductsSubcategory();
+            }
+
+            function obtenerCategoriesListFromJson() {
+                return $http.get('categorias-subcategorias.json').then(function (response) {
+                    let datos = response.data.categorias;
+                    let i = 0;
+                    angular.forEach(datos, function (value, key) {
+                        value.text = $scope.categoriesListEs[i].texto;
+                        let subcats = value.subcategorias;
+
+                        subcatIndex = 0;
+
+                        angular.forEach(subcats, function (v) {
+                            //////console.log('v',v);
+                            value.subcategorias[subcatIndex].textoEs = $scope.subCategoriesEs[v.SubCategoryId];
+                            subcatIndex++;
+                            $scope.subCategoriesList.push(value.subcategorias[subcatIndex]);
+                        });
+
+                        $scope.categoriesList.push(value);
+                        i++;
+                        //////console.log('value',value);
+                    });
+                });
+            }
+            function obtenerCategoriesListEs() {
+                $scope.categoriesListEs = [];
+                $scope.subCategoriesEs = [];
+
+                $http.get('subcategorias_es.csv').then(function (datos) {
+                    $scope.subCategoriesEs = csvToArray(datos.data);
+                    ////console.log('$scope.subCategoriesEs',$scope.subCategoriesEs);                    
+                });
+
+                $http.get('categorias-es.json').then(function (response) {
+                    $scope.categoriesListEs = response.data.categoriases;
+                    //////console.log(' $scope.categoriesListEs', $scope.categoriesListEs);    
+                    obtenerCategoriesListFromJson();
+                });
+            }
+
+            function csvToArray(csvString) {
+                var lines = csvString.split('\n');
+                var row = [];
+                lines.forEach(function (v) {
+                    var line = v.split(',');
+                    row[line[0]] = line[2];
+                    //////console.log("v",v);
+                });
+                return row;
+                //////console.log("row",row);                
+            }
+
+            $scope.resetearCategorias = function () {
+                $scope.showStoreBreadcrumb = false;
+                $scope.subCategoryTexto = "";
+                $scope.categoryTexto = "Categorías";
+                $scope.showTopSellerProducts = false;
+                $scope.showNewReleaseProducts = false;
+                $scope.index = "";
+                $scope.keyword = '';
+                $location.path('/boxitStore/');                
+            };
 
         }]);

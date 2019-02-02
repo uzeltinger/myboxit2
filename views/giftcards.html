@@ -1,23 +1,215 @@
-<!--
-<section class="rusia2018">
-    <div class="BarHeader Content">
-        <div class="BarHeaderContainer ContentContainer MaxWidth">
-            <img alt="" src="img/image_headerbar_1.png">
+<style>
+    @media(min-width:993px){
+        nav.navbar.navbar-fixed-top {
+            display: none;
+        }
+    }
+</style>
+<div class="boxitBar-top" id="boxitBar-top">
+    <!--<a class="btn-boxitstore-midtop navbarlink" ui-sref="home"><span>home</span></a>-->
+    <a class="navbar-brand" ui-sref="home">
+        <img src="img/newstyle/BoxitLogoNuevo.svg" class="svg" alt="Boxit"/>
+    </a>
+    <div class="giftcards-center">
+        <div class="navbar-giftcards navbarlink"><a ui-sref="giftcards">Gift Cards</a></div>
+    </div>	
+<div class="phones-right">	
+    <div class="navbar-phones">
+        <div class="navbar-phones-div">
+            <div class="customLabelPhone"><i class="fa fa-phone"></i> (507) 317-1014</div>
+            <div class="customLabelPhone"><i class="fa fa-whatsapp"></i> (507) 63494559</div>
+            <div class="customLabelPhone"><i class="fa fa-envelope"></i> hello@myboxit.com</div>
         </div>
-    </div>      
-    <div class="container" id="rusia2018-box">          
+    </div>
+</div>	
+</div>
+<div class="separatetopfixed"></div>
+<div class="row boxitBar white222">
+
+
+
+
+        <div class="form-group hidden">
+            <select default="All" id="select_categories" class="form-control" ng-change="setSubCategories()" ng-init="initIndex()" ng-model="index"
+                ng-options="index.attributes.SearchIndex for index in indexs"> </select>
+        </div>
+        <div class="form-group col-md-2" ng-show="showSubCategories">
+            <select class="form-control" ng-model="subCategory" ng-options="subCategory.SubCategoryName for subCategory in subCategories">
+            </select>
+        </div>
+
+
+
+
+<div class="only-descktop container">
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn-boxitstore navbarlink" ui-sref="boxitStore" ng-click="resetearCategorias()"><span>home</span></a>
+        </div>
+
+        
+        
+        
+        <div class="store-search col-md-7 m-t-5">
+            <div class="dropdown  boxitStoreCategories">
+                <a class="dropdown-toggle link-categorias btn" data-toggle="dropdown">{{categoryTexto}}<span><i class="fa fa-caret-down"></i></span></a>
+                
+                <ul class="top-categories dropdown-menu">
+                    <li class="resetCats">
+                        <a ng-click="resetearCategorias()">Todas</a>
+                    </li>
+                    <li class="dropdown-item" ng-repeat="category in categoriesList track by $index" ng-class="{'active': category.value==topCategory}">
+                        <!--<a ng-click="mostrarSubcategorias(category.value,$index)">{{category.text}}</a>-->
+                        <span>{{category.text}}</span>
+                        <ul id="subcats{{category.value}}" class="sub-categories">
+                            <!--ng-if="showSubCategoriAs === category.value"-->
+                            <div class="subcategorias-columna" ng-repeat="subCategoria in category.subcategorias">
+                                <a ng-click="mostrarProductos(subCategoria.SubCategoryId,subCategoria.textoEs,category.value,category.text)">{{subCategoria.textoEs}}</a>
+                            </div>
+                            <!--<li ng-repeat="subCategoria in category.subcategorias">
+                                <a ng-click="mostrarProductos(subCategoria.SubCategoryId,subCategoria.textoEs,category.value)">{{subCategoria.textoEs}}</a>
+                            </li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>       
+    
+            <div class="store-search-input ">
+                <div class="input-group">
+                    <!--<input class="form-control doSearch" name="find" ng-keypress="$event.keyCode == 13 ? doSearch() : ' '" ng-model="keyword" type="text"
+                    />-->
+                    <input class="form-control doSearch" name="find" ng-keypress="$event.keyCode == 13 ? doSearch() : ' '" ng-model="keyword" type="text"
+                    />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info searchblue" ng-click="doSearch()" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>                
+        </div>
+
+        <div class="col-md-3">
+
+            
+        
+            <div class="boxit-store-avatar" ng-show="UserName">
+                <!--<div class="user-photo">{{UserPhoto}}</div>-->
+                <span class="user-name dropdown">
+                        <a class="dropdown-toggle link-UserName" data-toggle="dropdown">{{UserName}}<span><i class="fa fa-chevron-down"></i></span></a>
+                        <ul class="dropdown-menu">                                    
+                            <li class="dropdown-item">
+                                <a class="navbarlink" ng-show="loged" ui-sref="home" >Inicio</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="navbarlink" ng-show="loged" ui-sref="giftcards" >Gift cards</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="navbarlink" ng-show="loged" ui-sref="misFavoritos" >Mis favoritos</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="navbarlink" ng-show="loged" ui-sref="userMenu.inicio" ng-click="iniciarSesion()">Área Usuario</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a ng-show="loged" ui-sref="home" ng-click="cerrarSesion()" class="navbarlink ">Cerrar sesión</a>
+                            </li>
+                        </ul>
+                </span>
+            </div>
+
+            <div class="usuariotopSearchBar" ng-show="!loged">
+                <div class="usuariotop-right">
+                    <div class="link">
+                        <a ng-show="!loged"  ui-sref="iniciarSesion" class="navbarlink iniciosesion">Inicia sesión</a>                            
+                    </div>
+                    <div class="link">
+                        <a class="btn-cuenta navbarlink" ng-show="!loged" ui-sref="registro">Crea tu Cuenta</a>                            
+                    </div>
+                </div>
+            </div>
+
+            <div class="store-cart" ng-show="UserName">
+                <a class="cart cart_anchor" ui-sref="carrito">
+                    <span id="cartNumber">{{carNumber}}</span>
+                    <br>
+                    <div class="carrito-texto">Carrito</div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="only-mobile">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Rusia 2018</h1>
+            <div class="col-xs-6 boxit-store-avatar" ng-show="!UserName">
+                <div class="user-photo"></div>
+                <span class="user-name">
+                    <a ui-sref="iniciarSesion">Inicia sesión</a>
+                </span>
+            </div>
+            <div class="col-xs-6 boxit-store-avatar" ng-show="UserName">
+                <div class="user-photo">{{UserPhoto}}</div>
+                <span class="user-name">{{UserName}}</span>
+            </div>
+            <div class="col-xs-6 store-cart boxit-store-cart">
+                <a class="cart cart_anchor" ui-sref="carrito">
+                    <span id="cartNumber">{{carNumber}}</span>Cart </a>
             </div>
         </div>
-    -->      
+        <div class="row">
+            <div class="col-lg-6 boxit-store-search">
+                <div class="input-group">
+                    <input type="text" name="find" class="form-control" placeholder="Buscar..." ng-keypress="$event.keyCode == 13 ? doSearch() : ' '"
+                        ng-model="keyword">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="doSearch()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="dropdown col-md-2 boxitStoreCategories boxitStoreCategoriesMobile">
+                <button id="buttonShowCategories" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    {{categoryTexto}}
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <ul class="top-categories">
+                        <li class="resetCats">
+                            <a ng-click="resetearCategorias()">Todas</a>
+                        </li>
+                        <li ng-repeat="category in categoriesList track by $index" ng-class="{'active': category.value==topCategory}">
+                            <a ng-click="mostrarSubcategorias(category.value,$index)">{{category.text}}</a>
+                            <ul id="subcats{{category.value}}" class="sub-categories-mobile" ng-if="showSubCategoriAs === category.value">
+
+                                <li ng-repeat="subCategoria in category.subcategorias">
+                                    <a ng-click="mostrarProductos(subCategoria.SubCategoryId,subCategoria.textoEs,category.value,category.text)">{{subCategoria.textoEs}}</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
 
 
 
 
 
 
+<!--
 <div class="boxitRusia2018-top"></div>
 <div class="container-fluid">
     <div class="row boxitRusia2018">
@@ -40,7 +232,7 @@
                 </div>
     </div>
 </div>   
-    
+-->
     <div class="BoxitStoreContainer container" ng-init="firstSearch()" style="margin-bottom: 10%;">
     <div class="row">
     <div ng-show="loadMain" style="margin-bottom: 20%">
